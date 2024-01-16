@@ -1,17 +1,27 @@
-import { SafeAreaView, Text  } from 'react-native';
-import {  useLoginState } from '../../components/UserProvider.jsx';
+import { Button, SafeAreaView, Text  } from 'react-native';
+import {  useLoginState, useUserControls } from '../../components/UserProvider.jsx';
+import { Link } from 'expo-router';
 
 export default function Landing() {
   const loginState = useLoginState();
-  console.log('got login state in Landing', loginState);
+  const {login} = useUserControls();
   
-  if (loginState == null) {
+  // User is logged in, redirect to home 
+  if (loginState === true) { 
+    return <Link replace href="(bottomtabs)"/>;
+  }
+
+  // We can't determine the user's auth state yet, show a splash screen
+  if (loginState === undefined) {
     return <SafeAreaView><Text style={{fontSize: 36 }}>Splash</Text></SafeAreaView>;
   }
 
   return (
     <SafeAreaView>
       <Text style={{fontSize: 36 }}>Landing</Text>
+      <Button title="login" onPress={() => {
+        login();
+      }} />
     </SafeAreaView>
   );
 }

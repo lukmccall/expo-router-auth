@@ -1,7 +1,10 @@
 import { usePathname, useRouter, useSearchParams, useSegments } from 'expo-router';
 import { useEffect, createContext, useState, useContext } from 'react';
 
-export const UserContext = createContext({});
+export const UserContext = createContext({
+  login: () => {},
+  logout: () => {},
+});
 
 export function useProtectedRoute(loginState) {
   const pathname = usePathname();
@@ -25,6 +28,11 @@ export function useLoginState() {
   return useContext(LoginStateContext);
 }
 
+
+export function useUserControls() {
+  return useContext(UserContext);
+}
+
 export interface IUserProviderProps {
   children?: React.ReactNode;
 }
@@ -42,7 +50,15 @@ export function UserProvider({ children }: IUserProviderProps) {
   }, []);
 
   return (
-    <UserContext.Provider value={{}}>
+    <UserContext.Provider value={{
+      login: () => {
+        // We are similating the time it takes to login.
+        // But firstly, we change the user to undefinded to show a splash screen.
+        setLoginState(undefined);
+        setTimeout(() => setLoginState(true), 1000)      
+      },
+      logout: () => setLoginState(false),
+    }}>
       <LoginStateContext.Provider value={loginState}>{children}</LoginStateContext.Provider>
     </UserContext.Provider>
   );

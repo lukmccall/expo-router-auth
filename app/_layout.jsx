@@ -15,6 +15,12 @@ export default function AppLayout() {
             animation: 'fade',
           }}
         />
+        <Stack.Screen
+          name="(auth)/landing"
+          options={{
+            animation: 'none', // I think that looks better, but feel free to change it
+          }}
+          />
       </Stack>
     </UserProvider>
   );
