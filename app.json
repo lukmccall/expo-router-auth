@@ -15,7 +15,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.lukaszkosmaty.snack-692ae4cf-4908-418f-94fe-7f442adb4acf",
     },
     "android": {
       "adaptiveIcon": {
@@ -26,6 +27,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "scheme":["home-screne-flash"],
     "description": "Home screen flashes while we check the user's auth state"
   }
 }
