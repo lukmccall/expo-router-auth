@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "partiful-router",
-    "slug": "partiful-router",
+    "name": "home-screen-flash",
+    "slug": "snack-692ae4cf-4908-418f-94fe-7f442adb4acf",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Home screen flashes while we check the user's auth state"
   }
 }
